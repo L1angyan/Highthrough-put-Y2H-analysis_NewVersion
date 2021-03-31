@@ -9,20 +9,20 @@ We generated a pipeline to analyze 3rd sequencing reads to find protein-protein 
 USEAGE:
 
 for i in *.fa;do
+
 name=${i%.fa}
+
 blastn -task blastn-short -query ./${name}.fa -subject ./attL.fa -out ./mapping/${name}.txt -num_threads 1 -outfmt 7 -evalue 1.0e-4 &
+
 done
-
-
 #Clean reads were mapped to ATTL reconbination sequence in FASTA format to locate the ATTL position in the reads and split the reads.
 
 #Make sure the ATTL reads in FASTA format is in current directory.
 
+
 python3 PPI_Finder1.py ./mapping/${name}.txt ./${name}.fa ./split/${name}
 
-
 #Using the python3 script to split the Pacbio 3rd sequencing reads into different file in FASTA format.
-
 #PPI_Finder1.py is avaiable as https://github.com/yannnnLi/Highthrough-put-Y2H-analysis_NewVersion.
 
 
