@@ -9,11 +9,8 @@ We generated a pipeline to analyze 3rd sequencing reads to find protein-protein 
 USEAGE:
 
 for i in *.fa;do
-
 name=${i%.fa}
-
 blastn -task blastn-short -query ./${name}.fa -subject ./attL.fa -out ./mapping/${name}.txt -num_threads 1 -outfmt 7 -evalue 1.0e-4 &
-
 done
 
 
